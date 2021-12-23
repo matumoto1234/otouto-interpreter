@@ -26,8 +26,7 @@ void funtion_test(std::vector<TestCase<InputType, OutputType>> test_cases, FuncT
     bool is_expected = (output == expected);
 
     std::cout << (is_expected ? "✓" : "✘") << " ";
-    std::cout << test_case.output() << "(" << time_s << "[s])"
-              << "\n";
+    std::cout << test_case.output() << "(" << time_s << "[s])\n";
 
     total_time_s += time_s;
     if (is_expected)
