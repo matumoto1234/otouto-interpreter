@@ -8,7 +8,7 @@
 #include <vector>
 
 template <typename InputType, typename OutputType, typename FuncType>
-void funtion_test(std::vector<TestCase<InputType, OutputType>> test_cases, FuncType func) {
+void function_test(std::vector<TestCase<InputType, OutputType>> test_cases, FuncType func) {
   double total_time_s = 0.0;
   int passed_count = 0, failed_count = 0;
 
