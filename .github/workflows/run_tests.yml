@@ -15,6 +15,11 @@ jobs:
         wget https://ja.osdn.net/projects/iutest/downloads/73395/iutest-1.17.1.tar.gz
         tar -xvf iutest-1.17.1.tar.gz
 
+    - name: PWD
+      run: |
+        pwd
+        ls
+
     - name: Run tests
       run: |
         find ./src/tests/ -name '*.test.cpp' | xargs g++-11 -std=c++20 -I/usr/
