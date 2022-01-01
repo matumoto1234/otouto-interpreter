@@ -1,3 +1,5 @@
+![Test badge](https://github.com/matumoto1234/otouto-interpreter/actions/workflows/run_tests.yml/badge.svg)
+
 # otouto-interpreter
 
 実は兄はいました
