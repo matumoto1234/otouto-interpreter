@@ -17,6 +17,9 @@ jobs:
 
     - name: Run lexical-analyzer test
       run: |
+        pwd
+        ls
+        ls ./src/tests/
         g++-11 -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/ src/tests/lexical-analyzer.test.cpp
         ./a.out
 
