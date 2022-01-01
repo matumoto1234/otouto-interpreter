@@ -13,6 +13,7 @@ jobs:
       run: |
         wget https://ja.osdn.net/projects/iutest/downloads/73395/iutest-1.17.1.tar.gz
         tar -xvf iutest-1.17.1.tar.gz
+        sudo apt install g++-11
 
     - name: Run lexical-analyzer test
       run: |
