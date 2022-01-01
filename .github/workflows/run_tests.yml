@@ -11,9 +11,10 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-        cd
         wget https://ja.osdn.net/projects/iutest/downloads/73395/iutest-1.17.1.tar.gz
         tar -xvf iutest-1.17.1.tar.gz
+        pwd
+        ls
 
     - name: PWD
       run: |
