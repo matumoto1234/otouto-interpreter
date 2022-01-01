@@ -1,0 +1,20 @@
+name: Run tests
+
+on:
+  push:
+
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install dependencies
+      run: |
+        cd
+        wget https://ja.osdn.net/projects/iutest/downloads/73395/iutest-1.17.1.tar.gz
+        tar -xvf iutest-1.17.1.tar.gz
+
+    - name: Run tests
+      run: |
+        find ./src/tests/ -name '*.test.cpp' | xargs g++-11 -std=c++20 -I/usr/
