@@ -3,7 +3,7 @@
 // Variable
 Variable::Variable() = default;
 
-void Variable::setName(std::string n) {
+void Variable::setVariableName(std::string n) {
   variable_name_ = n;
 }
 

@@ -9,6 +9,6 @@ class Variable {
 public:
   Variable();
 
-  void setName(std::string n);
+  void setVariableName(std::string n);
   std::string variableName() const;
 };
