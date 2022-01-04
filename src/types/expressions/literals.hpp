@@ -30,4 +30,4 @@ public:
   NullLiteral();
 };
 
-using Literal = std::variant<BoolLiteral, BoolLiteral, NullLiteral>;
+using Literal = std::variant<IntLiteral, BoolLiteral, NullLiteral>;
