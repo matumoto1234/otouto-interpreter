@@ -1,0 +1,14 @@
+#pragma once
+
+#include <string>
+
+// Variable
+class Variable {
+  std::string variable_name_;
+
+public:
+  Variable();
+
+  void setName(std::string n);
+  std::string variableName() const;
+};
