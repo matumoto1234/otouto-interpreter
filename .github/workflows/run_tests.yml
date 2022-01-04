@@ -21,25 +21,26 @@ jobs:
         cd ..
         sudo apt install g++-11
 
+    - name: Generate object files
+      run: |
+        find ./ \( -type d -and -name tests -and -prune \) -or \( -type f -and -name *.cpp -and -print \) | xargs g++-11 -c -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/
+
     - name: Run lexical-analyzer test
       run: |
-        pwd
-        ls
-        ls ./src/
-        g++-11 -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/ src/tests/lexical-analyzer.test.cpp
+        g++-11 -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/ ./*.o src/tests/lexical-analyzer.test.cpp
         ./a.out
 
     - name: Run parser test
       run: |
-        g++-11 -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/ src/tests/parser.test.cpp
+        g++-11 -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/ ./*.o src/tests/parser.test.cpp
         ./a.out
 
     - name: Run evaluator test
       run: |
-        g++-11 -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/ src/tests/evaluator.test.cpp
+        g++-11 -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/ ./*.o src/tests/evaluator.test.cpp
         ./a.out
 
     - name: Run interpreter test
       run: |
-        g++-11 -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/ src/tests/interpreter.test.cpp
+        g++-11 -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/ ./*.o src/tests/interpreter.test.cpp
         ./a.out
