@@ -1,7 +1,7 @@
 #pragma once
 
-#include "./literals.hpp"
-#include "./variable.hpp"
+#include "./expressions/literals.hpp"
+#include "./expressions/variable.hpp"
 
 #include <concepts>
 #include <memory>
