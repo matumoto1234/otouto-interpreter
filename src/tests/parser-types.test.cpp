@@ -67,3 +67,62 @@ IUTEST(ParserTypesTest, VariableTest) {
     IUTEST_ASSERT_EQ(v.variableName(), "aaa");
   }
 }
+
+IUTEST(ParserTypesTest, FunctionCallingTest1) {
+  FunctionCalling f;
+  IUTEST_ASSERT_EQ(f.functionName(), "");
+  IUTEST_ASSERT_EQ(f.arguments().empty(), true);
+}
+
+IUTEST(ParserTypesTest, FunctionCallingTest2) {
+  FunctionCalling f;
+
+  std::vector<Expression> a;
+  a.push_back(IntLiteral(100));
+  a.push_back(BoolLiteral(true));
+
+  f.setArguments(a);
+
+  IUTEST_ASSERT_EQ(f.arguments()[0].has_value(), true);
+  Literal a0 = std::get<Literal>(f.arguments()[0].value());
+  IUTEST_ASSERT_EQ(std::holds_alternative<IntLiteral>(a0), true);
+  IUTEST_ASSERT_EQ(std::get<IntLiteral>(a0).value(), 100);
+
+  IUTEST_ASSERT_EQ(f.arguments()[1].has_value(), true);
+  Literal a1 = std::get<Literal>(f.arguments()[1].value());
+  IUTEST_ASSERT_EQ(std::holds_alternative<BoolLiteral>(a1), true);
+  IUTEST_ASSERT_EQ(std::get<BoolLiteral>(a1).value(), true);
+}
+
+IUTEST(ParserTypesTest, FunctionCallingTest3) {
+  FunctionCalling f;
+
+  f.setFunctionName("hogehoge");
+
+  IUTEST_ASSERT_EQ(f.functionName(), "hogehoge");
+}
+
+IUTEST(ParserTypesTest, InfixOperatorTest1) {
+  internal_infix_operator::InfixOperator i;
+  IUTEST_ASSERT_EQ(i.lhs(), std::nullopt);
+  IUTEST_ASSERT_EQ(i.rhs(), std::nullopt);
+}
+
+// IUTEST(ParserTypesTest, InfixOperatorTest2) {
+//   internal_infix_operator::InfixOperator i;
+
+//   FunctionCalling f;
+
+//   std::vector<Expression> a;
+//   a.push_back(IntLiteral(100));
+
+//   f.setArguments(a);
+
+//   i.setLhs(f);
+
+//   IUTEST_ASSERT_EQ(i.lhs(), f);
+
+//   i.setRhs(IntLiteral(20));
+
+//   IUTEST_ASSERT_EQ(i.rhs(), IntLiteral(20));
+// }
