@@ -50,9 +50,9 @@ class FunctionCalling {
 public:
   FunctionCalling();
 
-  void setName(std::string n);
-  void setArguments(std::vector<Expression> a);
-  std::string name() const;
+  void setFunctionName(std::string);
+  void setArguments(std::vector<Expression>);
+  std::string functionName() const;
   std::vector<std::optional<Expression>> arguments() const;
 };
 
@@ -78,7 +78,6 @@ class Mul: internal_infix_operator::InfixOperator {};
 class Div: internal_infix_operator::InfixOperator {};
 
 class OrOperator: internal_infix_operator::InfixOperator {};
-
 class AndOperator: internal_infix_operator::InfixOperator {};
 
 
