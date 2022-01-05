@@ -47,10 +47,12 @@ void internal_infix_operator::InfixOperator::setRhs(Expression e) {
 }
 
 std::optional<Expression> internal_infix_operator::InfixOperator::lhs() const {
+  if (lhs_ == nullptr) return std::nullopt;
   return *lhs_;
 }
 
 std::optional<Expression> internal_infix_operator::InfixOperator::rhs() const {
+  if (rhs_ == nullptr) return std::nullopt;
   return *rhs_;
 }
 
