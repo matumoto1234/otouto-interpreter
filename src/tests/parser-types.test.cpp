@@ -108,21 +108,21 @@ IUTEST(ParserTypesTest, InfixOperatorTest1) {
   IUTEST_ASSERT_EQ(i.rhs(), std::nullopt);
 }
 
-// IUTEST(ParserTypesTest, InfixOperatorTest2) {
-//   internal_infix_operator::InfixOperator i;
+IUTEST(ParserTypesTest, InfixOperatorTest2) {
+  internal_infix_operator::InfixOperator i;
 
-//   FunctionCalling f;
+  FunctionCalling f;
 
-//   std::vector<Expression> a;
-//   a.push_back(IntLiteral(100));
+  std::vector<Expression> l;
+  l.push_back(IntLiteral(100));
 
-//   f.setArguments(a);
+  f.setArguments(l);
 
-//   i.setLhs(f);
+  i.setLhs(f);
 
-//   IUTEST_ASSERT_EQ(i.lhs(), f);
+  IUTEST_ASSERT_EQ(std::get<FunctionCalling>(i.lhs().value()).arguments(), f.arguments());
 
-//   i.setRhs(IntLiteral(20));
+  i.setRhs(IntLiteral(20));
 
-//   IUTEST_ASSERT_EQ(i.rhs(), IntLiteral(20));
-// }
+  IUTEST_ASSERT_EQ(std::get<IntLiteral>(std::get<Literal>(i.rhs().value())).value(), IntLiteral(20));
+}
