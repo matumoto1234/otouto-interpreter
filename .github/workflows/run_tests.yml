@@ -23,7 +23,7 @@ jobs:
 
     - name: Generate object files
       run: |
-        find ./ \( -type d -and -name tests -and -prune \) -or \( -type f -and -name *.cpp -and -print \) | xargs g++-11 -c -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/
+        find ./ \( -type d -and -name tests -and -prune \) -or \( -type d -and -name iutest_files -and -prune \) -or \( -type f -and -name *.cpp -and -print \) | xargs g++-11 -c -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest_files/include/
 
     - name: Run lexical-analyzer test
       run: |
