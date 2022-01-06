@@ -1,6 +1,6 @@
 CC := g++-11
 
-CFLAGS := -std=c++20 -c -I./iutest-master/include/
+CFLAGS := -std=c++20 -I./iutest-master/include/
 
 SRCS :=\
 	./src/types/expressions.cpp\
@@ -13,6 +13,8 @@ OBJS :=\
 	literals.o\
 	variable.o\
 	tokens.o\
+
+TEST_OBJS :=\
 	evaluator.test.o\
 	interpreter.test.o\
 	lexical-analyzer.test.o\
@@ -30,10 +32,10 @@ TARGET :=\
 	interpreter
 
 build: $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) $(TESTS)
+	$(CC) $(CFLAGS) -c $(SRCS) $(TESTS)
 
 clean:
-	rm -rf $(OBJS) a.out
+	rm -rf $(OBJS) $(TEST_OBJS) a.out
 
 test:
 	$(CC) $(CFLAGS) $(OBJS) $(TARGET).test.o
