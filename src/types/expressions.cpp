@@ -33,6 +33,10 @@ std::vector<std::optional<Expression>> FunctionCalling::arguments() const {
   return optional_arguments;
 }
 
+namespace {
+  using namespace infix_operator_base;
+  using namespace unary_operator_base;
+} // unnamed namespace
 
 // InfixOperator
 InfixOperator::InfixOperator(): lhs_(nullptr), rhs_(nullptr) {
