@@ -1,7 +1,8 @@
 #pragma once
 
 #include <string>
-#include <variant>;
+#include <variant>
+#include <vector>
 
 
 // Symbols
@@ -34,6 +35,8 @@ class Comma {};
 class Semicolon {};
 using Symbol = std::variant<Plus, Minus, Asterisk, Slash, Comma, Semicolon, Parens, Braces, LogicalSymbol, CompareSymbol>;
 
+
+// SymbolToken
 class SymbolToken {
   Symbol type_;
 
@@ -44,7 +47,8 @@ public:
   Symbol type() const;
 };
 
-// Identifier
+
+// IdentifierToken
 class Identifier {};
 
 class IdentifierToken {
@@ -59,9 +63,81 @@ public:
   std::string identifierName() const;
 };
 
-// ValueToken
+
+// IntToken
 class Int {};
 
 class IntToken {
-  
+  Int type_;
+  int value_;
+
+public:
+  IntToken();
+  IntToken(int);
+
+  Int type() const;
+  void setValue(int);
+  int value() const;
 };
+
+
+// BoolToken
+class Bool {};
+
+class BoolToken {
+  Bool type_;
+  bool value_;
+
+public:
+  BoolToken();
+  BoolToken(bool);
+
+  Bool type() const;
+  void setValue(bool);
+  bool value() const;
+};
+
+
+// Keyword
+class If {};
+class Else {};
+class Def {};
+class Null {};
+using Keyword = std::variant<If, Else, Def, Null>;
+
+
+// KeywordToken
+class KeywordTokenWithoutBoolToken {
+  Keyword type_;
+
+public:
+  KeywordTokenWithoutBoolToken();
+  KeywordTokenWithoutBoolToken(Keyword);
+
+  Keyword type() const;
+};
+
+using KeywordToken = std::variant<BoolToken, KeywordTokenWithoutBoolToken>;
+
+
+// UnknownCharacterToken
+class UnknownCharacter {};
+
+class UnknownCharacterToken {
+  UnknownCharacter type_;
+  std::string value_;
+
+public:
+  UnknownCharacterToken();
+  UnknownCharacterToken(std::string);
+
+  UnknownCharacter type() const;
+  void setValue(std::string);
+  std::string value() const;
+};
+
+
+// Token
+using Token = std::variant<SymbolToken, IdentifierToken, IntToken, KeywordToken, UnknownCharacterToken>;
+
+using Tokens = std::vector<Token>;
