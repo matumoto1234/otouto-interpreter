@@ -21,12 +21,12 @@ class Sub;
 class Mul;
 class Div;
 
-using ArithmeticOperators = std::variant<Add, Sub, Mul, Div>;
+using ArithmeticOperator = std::variant<Add, Sub, Mul, Div>;
 
 class OrOperator;
 class AndOperator;
 
-using LogicalOperators = std::variant<OrOperator, AndOperator>;
+using LogicalOperator = std::variant<OrOperator, AndOperator>;
 
 
 // UnaryOperator (declaration)
@@ -34,11 +34,11 @@ class UnaryPlus;
 class UnaryMinus;
 class UnaryNot;
 
-using UnaryOperators = std::variant<UnaryPlus, UnaryMinus, UnaryNot>;
+using UnaryOperator = std::variant<UnaryPlus, UnaryMinus, UnaryNot>;
 
 
 // Expression
-using Expression = std::variant<Literal, Variable, FunctionCalling, ArithmeticOperators, LogicalOperators, UnaryOperators>;
+using Expression = std::variant<Literal, Variable, FunctionCalling, ArithmeticOperator, LogicalOperator, UnaryOperator>;
 
 
 
@@ -54,6 +54,8 @@ public:
   void setArguments(std::vector<Expression>);
   std::string functionName() const;
   std::vector<std::optional<Expression>> arguments() const;
+
+  bool operator==(const FunctionCalling &) const;
 };
 
 
@@ -69,6 +71,8 @@ namespace infix_operator_base {
     void setRhs(Expression);
     std::optional<Expression> lhs() const;
     std::optional<Expression> rhs() const;
+
+    bool operator==(const InfixOperator &) const;
   };
 } // namespace infix_operator_base
 
@@ -92,8 +96,10 @@ namespace unary_operator_base {
 
     void setRhs(Expression);
     std::optional<Expression> rhs() const;
+
+    bool operator==(const UnaryOperator &) const;
   };
-} // namespace
+} // namespace unary_operator_base
 
 
 class UnaryPlus: unary_operator_base::UnaryOperator {};

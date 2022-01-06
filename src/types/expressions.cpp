@@ -19,7 +19,6 @@ std::string FunctionCalling::functionName() const {
   return function_name_;
 }
 
-
 std::vector<std::optional<Expression>> FunctionCalling::arguments() const {
   std::vector<std::optional<Expression>> optional_arguments;
   optional_arguments.reserve(arguments_.size());
@@ -33,12 +32,16 @@ std::vector<std::optional<Expression>> FunctionCalling::arguments() const {
   return optional_arguments;
 }
 
-namespace {
-  using namespace infix_operator_base;
-  using namespace unary_operator_base;
-} // unnamed namespace
+bool FunctionCalling::operator==(const FunctionCalling &other) const {
+  return (function_name_ == other.function_name_) and (arguments_ == other.arguments_);
+}
+
 
 // InfixOperator
+namespace {
+  using namespace infix_operator_base;
+} // unnamed namespace
+
 InfixOperator::InfixOperator(): lhs_(nullptr), rhs_(nullptr) {
 }
 
@@ -60,15 +63,24 @@ std::optional<Expression> InfixOperator::rhs() const {
   return *rhs_;
 }
 
-
-// UnaryOperator
-UnaryOperator::UnaryOperator(): rhs_(nullptr) {
+bool InfixOperator::operator==(const InfixOperator &other) const {
+  return (lhs_ == other.lhs_) and (rhs_ == other.rhs_);
 }
 
-void UnaryOperator::setRhs(Expression e) {
+
+// UnaryOperator
+unary_operator_base::UnaryOperator::UnaryOperator(): rhs_(nullptr) {
+}
+
+void unary_operator_base::UnaryOperator::setRhs(Expression e) {
   rhs_ = make_shared<Expression>(e);
 }
 
-std::optional<Expression> UnaryOperator::rhs() const {
+std::optional<Expression> unary_operator_base::UnaryOperator::rhs() const {
+  if (rhs_ == nullptr) return std::nullopt;
   return *rhs_;
+}
+
+bool unary_operator_base::UnaryOperator::operator==(const UnaryOperator &other) const {
+  return rhs_ == other.rhs_;
 }
