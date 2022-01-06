@@ -35,36 +35,36 @@ std::vector<std::optional<Expression>> FunctionCalling::arguments() const {
 
 
 // InfixOperator
-internal_infix_operator::InfixOperator::InfixOperator(): lhs_(nullptr), rhs_(nullptr) {
+InfixOperator::InfixOperator(): lhs_(nullptr), rhs_(nullptr) {
 }
 
-void internal_infix_operator::InfixOperator::setLhs(Expression e) {
+void InfixOperator::setLhs(Expression e) {
   lhs_ = make_shared<Expression>(e);
 }
 
-void internal_infix_operator::InfixOperator::setRhs(Expression e) {
+void InfixOperator::setRhs(Expression e) {
   rhs_ = make_shared<Expression>(e);
 }
 
-std::optional<Expression> internal_infix_operator::InfixOperator::lhs() const {
+std::optional<Expression> InfixOperator::lhs() const {
   if (lhs_ == nullptr) return std::nullopt;
   return *lhs_;
 }
 
-std::optional<Expression> internal_infix_operator::InfixOperator::rhs() const {
+std::optional<Expression> InfixOperator::rhs() const {
   if (rhs_ == nullptr) return std::nullopt;
   return *rhs_;
 }
 
 
 // UnaryOperator
-internal_unary_operator::UnaryOperator::UnaryOperator(): rhs_(nullptr) {
+UnaryOperator::UnaryOperator(): rhs_(nullptr) {
 }
 
-void internal_unary_operator::UnaryOperator::setRhs(Expression e) {
+void UnaryOperator::setRhs(Expression e) {
   rhs_ = make_shared<Expression>(e);
 }
 
-std::optional<Expression> internal_unary_operator::UnaryOperator::rhs() const {
+std::optional<Expression> UnaryOperator::rhs() const {
   return *rhs_;
 }
