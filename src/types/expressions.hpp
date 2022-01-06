@@ -58,7 +58,7 @@ public:
 
 
 // InfixOperators
-namespace {
+namespace infix_operator_base {
   class InfixOperator {
     std::shared_ptr<Expression> lhs_, rhs_;
 
@@ -70,20 +70,20 @@ namespace {
     std::optional<Expression> lhs() const;
     std::optional<Expression> rhs() const;
   };
-} // namespace
+} // namespace infix_operator_base
 
-class Add: InfixOperator {};
-class Sub: InfixOperator {};
-class Mul: InfixOperator {};
-class Div: InfixOperator {};
+class Add: infix_operator_base::InfixOperator {};
+class Sub: infix_operator_base::InfixOperator {};
+class Mul: infix_operator_base::InfixOperator {};
+class Div: infix_operator_base::InfixOperator {};
 
-class OrOperator: InfixOperator {};
-class AndOperator: InfixOperator {};
+class OrOperator: infix_operator_base::InfixOperator {};
+class AndOperator: infix_operator_base::InfixOperator {};
 
 
 
 // UnaryOperators
-namespace {
+namespace unary_operator_base {
   class UnaryOperator {
     std::shared_ptr<Expression> rhs_;
 
@@ -96,6 +96,6 @@ namespace {
 } // namespace
 
 
-class UnaryPlus: UnaryOperator {};
-class UnaryMinus: UnaryOperator {};
-class UnaryNot: UnaryOperator {};
+class UnaryPlus: unary_operator_base::UnaryOperator {};
+class UnaryMinus: unary_operator_base::UnaryOperator {};
+class UnaryNot: unary_operator_base::UnaryOperator {};
