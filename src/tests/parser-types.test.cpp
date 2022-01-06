@@ -103,13 +103,13 @@ IUTEST(ParserTypesTest, FunctionCallingTest3) {
 }
 
 IUTEST(ParserTypesTest, InfixOperatorTest1) {
-  InfixOperator i;
+  infix_operator_base::InfixOperator i;
   IUTEST_ASSERT_EQ(i.lhs(), std::nullopt);
   IUTEST_ASSERT_EQ(i.rhs(), std::nullopt);
 }
 
 IUTEST(ParserTypesTest, InfixOperatorTest2) {
-  InfixOperator i;
+  infix_operator_base::InfixOperator i;
 
   FunctionCalling f;
 
