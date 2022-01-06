@@ -1,11 +1,11 @@
-name: Run tests
+name: iutest
 
 on:
   push:
 
 
 jobs:
-  run_tests:
+  iutest:
     runs-on: ubuntu-latest
 
     steps:
