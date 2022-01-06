@@ -8,6 +8,13 @@ SRCS :=\
 	./src/types/expressions/variable.cpp\
 	./src/types/tokens.cpp\
 
+TESTS :=\
+	./src/tests/evaluator.test.cpp\
+	./src/tests/interpreter.test.cpp\
+	./src/tests/lexical-analyzer.test.cpp\
+	./src/tests/parser-types.test.cpp\
+	./src/tests/parser.test.cpp\
+
 OBJS :=\
   expressions.o\
 	literals.o\
@@ -20,13 +27,6 @@ TEST_OBJS :=\
 	lexical-analyzer.test.o\
 	parser-types.test.o\
 	parser.test.o\
-
-TESTS :=\
-	./src/tests/evaluator.test.cpp\
-	./src/tests/interpreter.test.cpp\
-	./src/tests/lexical-analyzer.test.cpp\
-	./src/tests/parser-types.test.cpp\
-	./src/tests/parser.test.cpp\
 
 TARGET :=\
 	interpreter
