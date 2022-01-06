@@ -18,24 +18,24 @@ jobs:
 
     - name: Generate object files
       run: |
-        find ./ \( -type d -and -name tests -and -prune \) -or \( -type d -and -name iutest_files -and -prune \) -or \( -type f -and -name *.cpp -and -print \) | xargs g++-11 -c -std=c++20 -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest-master/include/
+        make build
 
     - name: Run lexical-analyzer test
       run: |
-        g++-11 -std=c++20 -Wall -fsplit-stack -fstack-protector-all -fsanitize=undefined -D_GRIBCXX_DEBUG -Wfloat-equal -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest-master/include/ ./*.o src/tests/lexical-analyzer.test.cpp
-        ./a.out
+        make test TARGET=lexical-analyzer
+
+    - name: Run parser types test
+      run: |
+        make test TARGET=parser-types
 
     - name: Run parser test
       run: |
-        g++-11 -std=c++20 -Wall -fsplit-stack -fstack-protector-all -fsanitize=undefined -D_GRIBCXX_DEBUG -Wfloat-equal -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest-master/include/ ./*.o src/tests/parser.test.cpp
-        ./a.out
+        make test TARGET=parser
 
     - name: Run evaluator test
       run: |
-        g++-11 -std=c++20 -Wall -fsplit-stack -fstack-protector-all -fsanitize=undefined -D_GRIBCXX_DEBUG -Wfloat-equal -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest-master/include/ ./*.o src/tests/evaluator.test.cpp
-        ./a.out
+        make test TARGET=evaluator
 
     - name: Run interpreter test
       run: |
-        g++-11 -std=c++20 -Wall -fsplit-stack -fstack-protector-all -fsanitize=undefined -D_GRIBCXX_DEBUG -Wfloat-equal -I/home/runner/work/otouto-interpreter/otouto-interpreter/iutest-master/include/ ./*.o src/tests/interpreter.test.cpp
-        ./a.out
+        make test TARGET=interpreter
