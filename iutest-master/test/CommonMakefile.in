@@ -1,0 +1,201 @@
+#
+# Test Makefile Common
+#
+# Copyright (C) 2017-2019, Takazumi Shirayanagi
+# This software is released under the new BSD License,
+# see LICENSE
+#
+
+# iutest root directory
+IUTEST_DIR = ..
+IUTEST_INCLUDE = -I$(IUTEST_DIR)/include
+
+# All iutest headers. Usually you shouldn't change this
+# definition.
+IUTEST_HEADERS =$(IUTEST_DIR)/include/*.hpp \
+				$(IUTEST_DIR)/include/impl/*.ipp \
+				$(IUTEST_DIR)/include/internal/*.hpp \
+				$(IUTEST_DIR)/include/listener/*.hpp \
+				$(IUTEST_DIR)/include/util/*.hpp \
+				$(IUTEST_DIR)/include/gtest/*.hpp \
+				$(IUTEST_DIR)/include/gtest/switch/*.hpp
+
+ALLTESTS_TEST_SRCS= \
+		almost_eq_tests.cpp \
+		assertion_tests.cpp \
+		basic_tests.cpp \
+		combine_tests.cpp \
+		compatibility_tests.cpp \
+		filepath_tests.cpp \
+		fixture_tests.cpp \
+		no_failure_tests.cpp \
+		nullptr_tests.cpp \
+		param_test_tests1.cpp \
+		param_test_tests2.cpp \
+		pred_tests.cpp \
+		prod_tests1.cpp \
+		prod_tests2.cpp \
+		spi_tests.cpp \
+		static_assertion_tests.cpp \
+		string_assertion_tests.cpp \
+		syntax_tests.cpp \
+		syntax_gtest_tests.cpp \
+		type_param_tests1.cpp \
+		type_param_tests2.cpp \
+		type_param_tests3.cpp \
+		typed_test_tests.cpp \
+		values_tests.cpp \
+
+ALLTESTS_SRCS= main.cpp \
+		$(ALLTESTS_TEST_SRCS)
+
+ALLTESTS_TARGET=$(OUTDIR)/all_tests
+
+EXTENSIONTESTS_TEST_SRCS= \
+		concat_tests.cpp \
+		fixture_alias_tests.cpp \
+		ignore_tests.cpp \
+		package_tests1.cpp \
+		package_tests2.cpp \
+		pairwise_tests.cpp \
+		param_method_tests.cpp \
+		param_test_with_any_tests.cpp \
+		pp_tests.cpp \
+		random_values_tests.cpp \
+		values_gen_tests.cpp \
+		variadic_templates_tests.cpp \
+
+EXTENSIONTESTS_SRCS= main.cpp \
+		$(EXTENSIONTESTS_TEST_SRCS)
+
+EXTENSIONTESTS_TARGET=$(OUTDIR)/extension_tests
+
+UNITTESTS_TEST_SRCS= \
+		unit_file_tests.cpp \
+		unit_macro_tests.cpp \
+		unit_misc_tests.cpp \
+		unit_string_tests.cpp \
+		unit_string_view_tests.cpp \
+		unit_typetraits_tests.cpp \
+
+UNITTESTS_SRCS= main.cpp \
+		$(UNITTESTS_TEST_SRCS)
+
+UNITTESTS_TARGET=$(OUTDIR)/unit_tests
+
+SYNTAXTESTS_TEST_SRCS= \
+		syntax_tests.cpp \
+
+SYNTAXTESTS_SRCS= main.cpp \
+		$(SYNTAXTESTS_TEST_SRCS)
+
+SYNTAXTESTS_TARGET=$(OUTDIR)/syntax_tests
+
+NAMESPACETESTS_TARGET=$(OUTDIR)/namespace_tests
+
+TEST_TARGETS= \
+		$(OUTDIR)/also_run_disabled_tests \
+		$(OUTDIR)/assertion_return_tests \
+		$(OUTDIR)/assume_tests \
+		$(OUTDIR)/break_on_failure_nobreak_tests \
+		$(OUTDIR)/catch_exceptions_tests \
+		$(OUTDIR)/charcode_tests \
+		$(OUTDIR)/commandline_tests \
+		$(OUTDIR)/csvparams_invalid_file_tests \
+		$(OUTDIR)/csvparams_tests \
+		$(OUTDIR)/cxx_feature_tests \
+		$(OUTDIR)/disabled_tests \
+		$(OUTDIR)/empty_testname_tests \
+		$(OUTDIR)/env_var_gtest_tests \
+		$(OUTDIR)/environment_tests \
+		$(OUTDIR)/exception_assertion_tests \
+		$(OUTDIR)/exception_set_up_testsuite_tests \
+		$(OUTDIR)/exception_tests \
+		$(OUTDIR)/expression_assertion_tests \
+		$(OUTDIR)/file_system_tests \
+		$(OUTDIR)/filter_tests \
+		$(OUTDIR)/flagfile_gtest_tests \
+		$(OUTDIR)/floatingpoint_tests \
+		$(OUTDIR)/gtest_version_tests \
+		$(OUTDIR)/help_tests \
+		$(OUTDIR)/inform_tests \
+		$(OUTDIR)/internal_log_tests \
+		$(OUTDIR)/invalid_commandline_tests \
+		$(OUTDIR)/japanese_tests \
+		$(OUTDIR)/legacy_testcase_api_tests \
+		$(OUTDIR)/list_test_tests \
+		$(OUTDIR)/listener_tests \
+		$(OUTDIR)/matcher_tests \
+		$(OUTDIR)/minimum_tests \
+		$(OUTDIR)/no_failure_fail_tests \
+		$(OUTDIR)/no_fatalfailure_tests \
+		$(OUTDIR)/no_test_tests \
+		$(OUTDIR)/output_env_var_tests \
+		$(OUTDIR)/output_junit_xml_empty_tests \
+		$(OUTDIR)/output_junit_xml_tests \
+		$(OUTDIR)/output_xml_tests \
+		$(OUTDIR)/port_tests \
+		$(OUTDIR)/printers_tests \
+		$(OUTDIR)/progress_tests \
+		$(OUTDIR)/quiet_result_printer_tests \
+		$(OUTDIR)/random_seed_tests \
+		$(OUTDIR)/record_property_tests \
+		$(OUTDIR)/repeat_tests \
+		$(OUTDIR)/scoped_trace_tests \
+		$(OUTDIR)/set_up_failure_tests \
+		$(OUTDIR)/set_up_global_failure_tests \
+		$(OUTDIR)/set_up_testcase_failure_tests \
+		$(OUTDIR)/shuffle_tests \
+		$(OUTDIR)/skip_tests \
+		$(OUTDIR)/spec_tests \
+		$(OUTDIR)/spi_failure_tests \
+		$(OUTDIR)/streaming_listener_tests \
+		$(OUTDIR)/throw_on_assertion_failure_tests \
+		$(OUTDIR)/throw_on_failure_tests \
+		$(OUTDIR)/tr1_tests \
+		$(OUTDIR)/uninitialize_tests \
+		$(OUTDIR)/util_release_default_xml_generator_tests \
+		$(OUTDIR)/util_tests \
+
+ASSERTION_ONLY_TARGETS= \
+		$(OUTDIR)/assertion_only_tests \
+
+TARGETS_IUTEST_ONLY = \
+		$(OUTDIR)/default_main_tests \
+		$(OUTDIR)/default_printer_listener_tests \
+		$(OUTDIR)/env_var_tests \
+		$(OUTDIR)/exit_tests \
+		$(OUTDIR)/feature_spec_tests \
+		$(OUTDIR)/filter_file_invalid_path_tests \
+		$(OUTDIR)/filter_file_syntax_tests \
+		$(OUTDIR)/filter_file_tests \
+		$(OUTDIR)/flagfile_env_var_tests \
+		$(OUTDIR)/flagfile_invalid_path_tests \
+		$(OUTDIR)/flagfile_tests \
+		$(OUTDIR)/invalid_both_suite_and_case_set_up_tests \
+		$(OUTDIR)/invalid_both_suite_and_case_teardown_tests \
+		$(OUTDIR)/invalid_locale_ctype_tests \
+		$(OUTDIR)/ostream_formatter_tests \
+		$(OUTDIR)/output_long_type_param_tests \
+		$(OUTDIR)/output_tests \
+		$(OUTDIR)/output_xml_invalid_path_tests \
+		$(OUTDIR)/output_xml_repeat_tests \
+		$(OUTDIR)/own_string_view_tests \
+		$(OUTDIR)/param_test_name_invalid_tests \
+		$(OUTDIR)/param_test_name_tests \
+		$(OUTDIR)/no_yoda_tests \
+		$(OUTDIR)/scoped_trace_exception_tests \
+		$(OUTDIR)/tap_file_generator_listener_tests \
+		$(OUTDIR)/tap_printer_listener_tests \
+		$(OUTDIR)/type_param_register_exception_int_tests \
+		$(OUTDIR)/type_param_register_exception_std_tests \
+		$(OUTDIR)/type_param_strict_failure_tests \
+		$(OUTDIR)/type_param_strict_tests
+
+COMPILEERROR_TARGETS=\
+		$(OUTDIR)/check_strict_tests \
+		$(OUTDIR)/empty_testname_failure_tests \
+		$(OUTDIR)/static_assertion_failure_tests \
+
+BUILD_ONLY = $(OUTDIR)/break_on_failure_tests \
+
