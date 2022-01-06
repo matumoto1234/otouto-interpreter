@@ -124,5 +124,5 @@ IUTEST(ParserTypesTest, InfixOperatorTest2) {
 
   i.setRhs(IntLiteral(20));
 
-  IUTEST_ASSERT_EQ(std::get<IntLiteral>(std::get<Literal>(i.rhs().value())).value(), IntLiteral(20));
+  IUTEST_ASSERT_EQ(std::get<IntLiteral>(std::get<Literal>(i.rhs().value())).value(), 20);
 }
