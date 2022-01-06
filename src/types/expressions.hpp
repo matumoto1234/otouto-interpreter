@@ -76,13 +76,13 @@ namespace infix_operator_base {
   };
 } // namespace infix_operator_base
 
-class Add: infix_operator_base::InfixOperator {};
-class Sub: infix_operator_base::InfixOperator {};
-class Mul: infix_operator_base::InfixOperator {};
-class Div: infix_operator_base::InfixOperator {};
+class Add: public infix_operator_base::InfixOperator {};
+class Sub: public infix_operator_base::InfixOperator {};
+class Mul: public infix_operator_base::InfixOperator {};
+class Div: public infix_operator_base::InfixOperator {};
 
-class OrOperator: infix_operator_base::InfixOperator {};
-class AndOperator: infix_operator_base::InfixOperator {};
+class OrOperator: public infix_operator_base::InfixOperator {};
+class AndOperator: public infix_operator_base::InfixOperator {};
 
 
 
@@ -97,11 +97,11 @@ namespace unary_operator_base {
     void setRhs(Expression);
     std::optional<Expression> rhs() const;
 
-    bool operator==(const UnaryOperator &) const;
+    bool operator==(const unary_operator_base::UnaryOperator &) const;
   };
 } // namespace unary_operator_base
 
 
-class UnaryPlus: unary_operator_base::UnaryOperator {};
-class UnaryMinus: unary_operator_base::UnaryOperator {};
-class UnaryNot: unary_operator_base::UnaryOperator {};
+class UnaryPlus: public unary_operator_base::UnaryOperator {};
+class UnaryMinus: public unary_operator_base::UnaryOperator {};
+class UnaryNot: public unary_operator_base::UnaryOperator {};

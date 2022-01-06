@@ -81,6 +81,6 @@ std::optional<Expression> unary_operator_base::UnaryOperator::rhs() const {
   return *rhs_;
 }
 
-bool unary_operator_base::UnaryOperator::operator==(const UnaryOperator &other) const {
+bool unary_operator_base::UnaryOperator::operator==(const unary_operator_base::UnaryOperator &other) const {
   return rhs_ == other.rhs_;
 }
