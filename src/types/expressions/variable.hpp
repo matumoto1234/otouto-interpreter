@@ -11,4 +11,6 @@ public:
 
   void setVariableName(std::string n);
   std::string variableName() const;
+
+  bool operator==(const Variable &) const;
 };

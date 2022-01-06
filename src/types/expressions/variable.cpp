@@ -10,3 +10,7 @@ void Variable::setVariableName(std::string n) {
 std::string Variable::variableName() const {
   return variable_name_;
 }
+
+bool Variable::operator==(const Variable &other) const {
+  return variable_name_ == other.variable_name_;
+}
