@@ -1,4 +1,4 @@
-[![Actions status](https://github.com/matumoto1234/otouto-interpreter/actions/workflows/run_tests.yml/badge.svg)](https://github.com/matumoto1234/otouto-interpreter/actions/)
+[![Actions status](https://github.com/matumoto1234/otouto-interpreter/actions/workflows/iutest.yml/badge.svg)](https://github.com/matumoto1234/otouto-interpreter/actions/)
 
 # otouto-interpreter
 
