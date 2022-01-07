@@ -66,10 +66,10 @@ bool BoolToken::value() const {
 
 // KeywordTokenWithoutBoolToken
 KeywordTokenWithoutBoolToken::KeywordTokenWithoutBoolToken() = default;
-KeywordTokenWithoutBoolToken::KeywordTokenWithoutBoolToken(Keyword keyword): type_(keyword) {
+KeywordTokenWithoutBoolToken::KeywordTokenWithoutBoolToken(KeywordWithoutBool keyword): type_(keyword) {
 }
 
-Keyword KeywordTokenWithoutBoolToken::type() const {
+KeywordWithoutBool KeywordTokenWithoutBoolToken::type() const {
   return type_;
 }
 

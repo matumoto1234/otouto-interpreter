@@ -103,19 +103,21 @@ class If {};
 class Else {};
 class Def {};
 class Null {};
-using Keyword = std::variant<If, Else, Def, Null>;
+using KeywordWithoutBool = std::variant<If, Else, Def, Null>;
 
 
 // KeywordToken
 class KeywordTokenWithoutBoolToken {
-  Keyword type_;
+  KeywordWithoutBool type_;
 
 public:
   KeywordTokenWithoutBoolToken();
-  KeywordTokenWithoutBoolToken(Keyword);
+  KeywordTokenWithoutBoolToken(KeywordWithoutBool);
 
-  Keyword type() const;
+  KeywordWithoutBool type() const;
 };
+
+using Keyword = std::variant<Bool, KeywordWithoutBool>;
 
 using KeywordToken = std::variant<BoolToken, KeywordTokenWithoutBoolToken>;
 
