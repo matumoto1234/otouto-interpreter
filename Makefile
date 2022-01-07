@@ -14,6 +14,7 @@ TESTS :=\
 	./src/tests/lexical-analyzer.test.cpp\
 	./src/tests/parser-types.test.cpp\
 	./src/tests/parser.test.cpp\
+	./src/tests/tokens.test.cpp\
 
 OBJS :=\
   expressions.o\
@@ -27,9 +28,16 @@ TEST_OBJS :=\
 	lexical-analyzer.test.o\
 	parser-types.test.o\
 	parser.test.o\
+	tokens.test.o\
 
 TARGET :=\
 	interpreter
+
+FILE :=\
+	interpreter.cpp
+
+only-build:
+	$(CC) $(CFLAGS) -c $(FILE)
 
 build: $(SRCS)
 	$(CC) $(CFLAGS) -c $(SRCS) $(TESTS)
@@ -43,4 +51,4 @@ test:
 
 all: clean build test
 
-.PHONY: build clean test all
+.PHONY: only-build build clean test all
