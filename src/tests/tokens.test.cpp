@@ -1,4 +1,4 @@
-#include "../src/types/tokens.hpp"
+#include "../types/tokens.hpp"
 
 #include <iutest.hpp>
 #include <type_traits>
@@ -13,14 +13,6 @@ IUTEST(TokensTest, SymbolTokenTest1) {
   SymbolToken s;
 
   bool result = std::is_same_v<decltype(s.type()), Symbol>;
-
-  IUTEST_ASSERT_EQ(result, true);
-}
-
-IUTEST(TokensTest, SymbolTokenTest2) {
-  SymbolToken s(LParen{});
-
-  bool result = std::holds_alternative<LParen>(s.type());
 
   IUTEST_ASSERT_EQ(result, true);
 }
@@ -86,8 +78,8 @@ IUTEST(TokensTest, BoolTokenTest2) {
 
 IUTEST(TokensTest, KeywordTokenWithoutBoolTokenTest1) {
   KeywordTokenWithoutBoolToken k;
-  
-  bool result = std::is_same_v<decltype(k.type()), Keyword>;
+
+  bool result = std::is_same_v<decltype(k.type()), KeywordWithoutBool>;
 
   IUTEST_ASSERT_EQ(result, true);
 }
