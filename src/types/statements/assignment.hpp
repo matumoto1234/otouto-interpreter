@@ -10,8 +10,8 @@ class Assignment {
 public:
   Assignment();
 
-  std::string variableName();
-  Expression expression();
   void setVariableName(std::string);
   void setExpression(Expression);
+  std::string variableName() const;
+  Expression expression() const;
 };
