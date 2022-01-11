@@ -10,6 +10,10 @@ class IfStatement;
 
 using Statement = std::variant<IfStatement, Assignment, Expression>;
 
+using Statements = std::vector<Statement>;
+using StatementPointers = std::vector<std::shared_ptr<Statement>>;
+using OptionalStatements = std::vector<std::optional<Statement>>;
+
 
 class ElseStatement {
   std::vector<std::shared_ptr<Statement>> statements_;
