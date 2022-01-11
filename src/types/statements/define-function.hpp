@@ -6,7 +6,7 @@
 class DefineFunction {
   std::string function_name_;
   std::vector<std::string> arguments_;
-  std::vector<Statement> statements_;
+  Statements statements_;
 
 public:
   DefineFunction();
@@ -16,5 +16,5 @@ public:
   void setStatements(std::vector<Statement> statements_);
   std::string functionName() const;
   std::vector<std::string> arguments() const;
-  std::vector<Statement> statements() const;
+  Statements statements() const;
 };

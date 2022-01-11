@@ -16,13 +16,13 @@ using OptionalStatements = std::vector<std::optional<Statement>>;
 
 
 class ElseStatement {
-  std::vector<std::shared_ptr<Statement>> statements_;
+  StatementPointers statements_;
 
 public:
   ElseStatement();
 
   void setStatements(std::vector<Statement>);
-  std::vector<std::optional<Statement>> statements() const;
+  OptionalStatements statements() const;
 };
 
 
@@ -37,6 +37,6 @@ public:
   void setIfStatements(std::vector<Expression>);
   void setElseSatements(std::vector<Expression>);
   Expression condition() const;
-  std::vector<std::optional<Statement>> ifStatements() const;
-  std::vector<std::optional<Statement>> elseStatements() const;
+  OptionalStatements ifStatements() const;
+  OptionalStatements elseStatements() const;
 };

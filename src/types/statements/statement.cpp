@@ -4,8 +4,8 @@
 // ElseStatement
 ElseStatement::ElseStatement() = default;
 
-std::vector<std::optional<Statement>> ElseStatement::statements() const {
-  std::vector<std::optional<Statement>> optional_statements;
+OptionalStatements ElseStatement::statements() const {
+  OptionalStatements optional_statements;
   optional_statements.reserve(statements_.size());
 
   for (std::shared_ptr<Statement> statement: statements_) {
@@ -26,8 +26,8 @@ Expression IfStatement::condition() const {
   return condition_;
 }
 
-std::vector<std::optional<Statement>> IfStatement::ifStatements() const {
-  std::vector<std::optional<Statement>> optional_if_statements;
+OptionalStatements IfStatement::ifStatements() const {
+  OptionalStatements optional_if_statements;
   optional_if_statements.reserve(if_statements_.size());
 
   for (std::shared_ptr<Statement> statement: if_statements_) {
@@ -40,8 +40,8 @@ std::vector<std::optional<Statement>> IfStatement::ifStatements() const {
   return optional_if_statements;
 }
 
-std::vector<std::optional<Statement>> IfStatement::elseStatements() const {
-  std::vector<std::optional<Statement>> optional_else_statements;
+OptionalStatements IfStatement::elseStatements() const {
+  OptionalStatements optional_else_statements;
   optional_else_statements.reserve(else_statements_.size());
 
   for (std::shared_ptr<Statement> statement: else_statements_) {
