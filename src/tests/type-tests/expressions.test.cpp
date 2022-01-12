@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
   return IUTEST_RUN_ALL_TESTS();
 }
 
-IUTEST(ParserTypesTest, IntLiteralTest) {
+IUTEST(ExpressionsTest, IntLiteralTest) {
   {
     IntLiteral i;
     IUTEST_ASSERT_EQ(i.value(), 0);
@@ -31,7 +31,7 @@ IUTEST(ParserTypesTest, IntLiteralTest) {
   }
 }
 
-IUTEST(ParserTypesTest, BoolLiteralTest) {
+IUTEST(ExpressionsTest, BoolLiteralTest) {
   {
     BoolLiteral b;
     IUTEST_ASSERT_EQ(b.value(), false);
@@ -55,7 +55,7 @@ IUTEST(ParserTypesTest, BoolLiteralTest) {
   }
 }
 
-IUTEST(ParserTypesTest, VariableTest) {
+IUTEST(ExpressionsTest, VariableTest) {
   {
     Variable v;
     IUTEST_ASSERT_EQ(v.variableName(), "");
@@ -68,13 +68,13 @@ IUTEST(ParserTypesTest, VariableTest) {
   }
 }
 
-IUTEST(ParserTypesTest, FunctionCallingTest1) {
+IUTEST(ExpressionsTest, FunctionCallingTest1) {
   FunctionCalling f;
   IUTEST_ASSERT_EQ(f.functionName(), "");
   IUTEST_ASSERT_EQ(f.arguments().empty(), true);
 }
 
-IUTEST(ParserTypesTest, FunctionCallingTest2) {
+IUTEST(ExpressionsTest, FunctionCallingTest2) {
   FunctionCalling f;
 
   std::vector<Expression> a;
@@ -94,7 +94,7 @@ IUTEST(ParserTypesTest, FunctionCallingTest2) {
   IUTEST_ASSERT_EQ(std::get<BoolLiteral>(a1).value(), true);
 }
 
-IUTEST(ParserTypesTest, FunctionCallingTest3) {
+IUTEST(ExpressionsTest, FunctionCallingTest3) {
   FunctionCalling f;
 
   f.setFunctionName("hogehoge");
@@ -102,13 +102,13 @@ IUTEST(ParserTypesTest, FunctionCallingTest3) {
   IUTEST_ASSERT_EQ(f.functionName(), "hogehoge");
 }
 
-IUTEST(ParserTypesTest, InfixOperatorTest1) {
+IUTEST(ExpressionsTest, InfixOperatorTest1) {
   infix_operator_base::InfixOperator i;
   IUTEST_ASSERT_EQ(i.lhs(), std::nullopt);
   IUTEST_ASSERT_EQ(i.rhs(), std::nullopt);
 }
 
-IUTEST(ParserTypesTest, InfixOperatorTest2) {
+IUTEST(ExpressionsTest, InfixOperatorTest2) {
   infix_operator_base::InfixOperator i;
 
   FunctionCalling f;
