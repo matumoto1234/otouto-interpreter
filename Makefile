@@ -12,9 +12,10 @@ TESTS :=\
 	./src/tests/evaluator.test.cpp\
 	./src/tests/interpreter.test.cpp\
 	./src/tests/lexical-analyzer.test.cpp\
-	./src/tests/parser-types.test.cpp\
 	./src/tests/parser.test.cpp\
 	./src/tests/tokens.test.cpp\
+	./src/type-tests/expressions.test.cpp\
+	./src/type-tests/statements.test.cpp\
 
 OBJS :=\
   expressions.o\
@@ -26,9 +27,10 @@ TEST_OBJS :=\
 	evaluator.test.o\
 	interpreter.test.o\
 	lexical-analyzer.test.o\
-	parser-types.test.o\
 	parser.test.o\
 	tokens.test.o\
+	expressions.test.o\
+	statements.test.o\
 
 TARGET :=\
 	interpreter
