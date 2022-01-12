@@ -14,8 +14,8 @@ TESTS :=\
 	./src/tests/lexical-analyzer.test.cpp\
 	./src/tests/parser.test.cpp\
 	./src/tests/tokens.test.cpp\
-	./src/type-tests/expressions.test.cpp\
-	./src/type-tests/statements.test.cpp\
+	./src/tests/type-tests/expressions.test.cpp\
+	./src/tests/type-tests/statements.test.cpp\
 
 OBJS :=\
   expressions.o\
