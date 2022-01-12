@@ -12,6 +12,6 @@ public:
 
   void setMessage(std::string);
   void setFrontToken(Token);
-  std::string message();
-  Token front_token();
+  std::string message() const;
+  Token front_token() const;
 };
