@@ -1,7 +1,7 @@
 #pragma once
 
-#include "./expressions.hpp"
-#include "./statements/assignment.hpp"
+#include "../expressions/expression.hpp"
+#include "./assignment.hpp"
 
 
 // IfStatment
@@ -34,8 +34,8 @@ public:
   IfStatement();
 
   void setCondition(Expression);
-  void setIfStatements(std::vector<Expression>);
-  void setElseSatements(std::vector<Expression>);
+  void setIfStatements(Statements);
+  void setElseStatements(Statements);
   Expression condition() const;
   OptionalStatements ifStatements() const;
   OptionalStatements elseStatements() const;

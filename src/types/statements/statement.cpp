@@ -4,6 +4,13 @@
 // ElseStatement
 ElseStatement::ElseStatement() = default;
 
+void ElseStatement::setStatements(Statements statements) {
+  statements_.assign(statements.size(), nullptr);
+  for (size_t i = 0; i < statements.size(); i++) {
+    statements_[i] = std::make_shared<Statement>(statements[i]);
+  }
+}
+
 OptionalStatements ElseStatement::statements() const {
   OptionalStatements optional_statements;
   optional_statements.reserve(statements_.size());
@@ -21,6 +28,26 @@ OptionalStatements ElseStatement::statements() const {
 
 // IfStatement
 IfStatement::IfStatement() = default;
+
+void IfStatement::setCondition(Expression expression) {
+  condition_ = expression;
+}
+
+void IfStatement::setIfStatements(Statements if_statements) {
+  if_statements_.assign(if_statements.size(), nullptr);
+
+  for (size_t i = 0; i < if_statements.size(); i++) {
+    if_statements_[i] = std::make_shared<Statement>(if_statements[i]);
+  }
+}
+
+void IfStatement::setElseStatements(Statements else_statements) {
+  else_statements_.assign(else_statements.size(), nullptr);
+
+  for (size_t i = 0; i < else_statements.size(); i++) {
+    else_statements_[i] = std::make_shared<Statement>(else_statements[i]);
+  }
+}
 
 Expression IfStatement::condition() const {
   return condition_;
