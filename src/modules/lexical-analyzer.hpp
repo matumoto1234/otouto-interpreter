@@ -11,8 +11,8 @@ Tokens lexical_analyze(std::string source) {
   Tokens tokens;
 
   int size = source.size();
-  for(int i=0;i<size;i++){
-    switch(source[i]){
+  for (int i = 0; i < size; i++) {
+    switch (source[i]) {
       case '+':
         tokens.push_back(SymbolToken(Plus{}));
         break;
