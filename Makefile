@@ -3,10 +3,14 @@ CC := g++-11
 CFLAGS := -std=c++20 -I./iutest-master/include/
 
 SRCS :=\
-	./src/types/expressions.cpp\
+	./src/types/expressions/expression.cpp\
 	./src/types/expressions/literals.cpp\
 	./src/types/expressions/variable.cpp\
 	./src/types/tokens.cpp\
+	./src/types/statements/assignment.cpp\
+	./src/types/statements/define-function.cpp\
+	./src/types/statements/statement.cpp\
+	./src/types/statements/syntax-error.cpp\
 
 TESTS :=\
 	./src/tests/evaluator.test.cpp\
@@ -14,14 +18,18 @@ TESTS :=\
 	./src/tests/lexical-analyzer.test.cpp\
 	./src/tests/parser.test.cpp\
 	./src/tests/tokens.test.cpp\
-	./src/tests/type-tests/expressions.test.cpp\
+	./src/tests/type-tests/expression.test.cpp\
 	./src/tests/type-tests/statements.test.cpp\
 
 OBJS :=\
-  expressions.o\
+  expression.o\
 	literals.o\
 	variable.o\
 	tokens.o\
+	assignment.o\
+	define-function.o\
+	statement.o\
+	syntax-error.o\
 
 TEST_OBJS :=\
 	evaluator.test.o\
@@ -29,7 +37,7 @@ TEST_OBJS :=\
 	lexical-analyzer.test.o\
 	parser.test.o\
 	tokens.test.o\
-	expressions.test.o\
+	expression.test.o\
 	statements.test.o\
 
 TARGET :=\
