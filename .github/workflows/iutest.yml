@@ -30,7 +30,7 @@ jobs:
 
     - name: Run statement test
       run: |
-        make test TARGET=statement
+        make test TARGET=statements
 
     - name: Run parser test
       run: |
