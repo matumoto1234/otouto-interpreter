@@ -24,9 +24,13 @@ jobs:
       run: |
         make test TARGET=lexical-analyzer
 
-    - name: Run parser types test
+    - name: Run expression test
       run: |
-        make test TARGET=parser-types
+        make test TARGET=expression
+
+    - name: Run statement test
+      run: |
+        make test TARGET=statement
 
     - name: Run parser test
       run: |
