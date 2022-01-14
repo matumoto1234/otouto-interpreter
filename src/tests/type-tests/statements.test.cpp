@@ -64,7 +64,6 @@ IUTEST(StatementsTest, ElseStatementTest) {
 }
 
 
-/*
 IUTEST(StatementsTest, IfStatementTest) {
   IfStatement is;
 
@@ -76,13 +75,15 @@ IUTEST(StatementsTest, IfStatementTest) {
     ss.push_back(IntLiteral(30));
     ss.push_back(BoolLiteral(true));
 
-    is.setElseStatements(ss);
+    is.setIfStatements(ss);
   }
 
   OptionalStatements os = is.ifStatements();
 
   IUTEST_ASSERT_EQ(get<BoolLiteral>(get<Literal>(is.condition())).value(), true);
-  IUTEST_ASSERT_EQ(get<IntLiteral>(get<Literal>(os[0].value())).value(), 30);
-  IUTEST_ASSERT_EQ(get<BoolLiteral>(get<Literal>(os[0].value())).value(), true);
+
+  IUTEST_ASSERT_EQ(os.size(), 2);
+
+  IUTEST_ASSERT_EQ(get<IntLiteral>(get<Literal>(get<Expression>(os[0].value()))).value(), 30);
+  IUTEST_ASSERT_EQ(get<BoolLiteral>(get<Literal>(get<Expression>(os[1].value()))).value(), true);
 }
-*/
