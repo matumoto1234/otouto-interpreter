@@ -3,7 +3,6 @@
 #include "./literals.hpp"
 #include "./variable.hpp"
 
-#include <concepts>
 #include <memory>
 #include <optional>
 #include <string>
