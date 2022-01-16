@@ -3,25 +3,27 @@
 #include "./parse-mul-div-expression.hpp"
 
 
-bool has_plus(Token token) {
-  if (std::holds_alternative<SymbolToken>(token)) {
-    SymbolToken symbol_token = std::get<SymbolToken>(token);
+namespace {
+  bool has_plus(Token token) {
+    if (std::holds_alternative<SymbolToken>(token)) {
+      SymbolToken symbol_token = std::get<SymbolToken>(token);
 
-    if (std::holds_alternative<Plus>(symbol_token.type())) return true;
+      if (std::holds_alternative<Plus>(symbol_token.type())) return true;
+    }
+
+    return false;
   }
 
-  return false;
-}
+  bool has_minus(Token token) {
+    if (std::holds_alternative<SymbolToken>(token)) {
+      SymbolToken symbol_token = std::get<SymbolToken>(token);
 
-bool has_minus(Token token) {
-  if (std::holds_alternative<SymbolToken>(token)) {
-    SymbolToken symbol_token = std::get<SymbolToken>(token);
+      if (std::holds_alternative<Minus>(symbol_token.type())) return true;
+    }
 
-    if (std::holds_alternative<Minus>(symbol_token.type())) return true;
+    return false;
   }
-
-  return false;
-}
+} // namespace
 
 
 // parse_add_sub_expression: Tokens |-> (Expression, parsed tokens count)

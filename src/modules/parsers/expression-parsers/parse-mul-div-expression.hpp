@@ -3,25 +3,27 @@
 #include "./parse-parentheses.hpp"
 
 
-bool has_asterisk(Token token) {
-  if (std::holds_alternative<SymbolToken>(token)) {
-    SymbolToken symbol_token = std::get<SymbolToken>(token);
+namespace {
+  bool has_asterisk(Token token) {
+    if (std::holds_alternative<SymbolToken>(token)) {
+      SymbolToken symbol_token = std::get<SymbolToken>(token);
 
-    if (std::holds_alternative<Asterisk>(symbol_token.type())) return true;
+      if (std::holds_alternative<Asterisk>(symbol_token.type())) return true;
+    }
+
+    return false;
   }
 
-  return false;
-}
+  bool has_slash(Token token) {
+    if (std::holds_alternative<SymbolToken>(token)) {
+      SymbolToken symbol_token = std::get<SymbolToken>(token);
 
-bool has_slash(Token token) {
-  if (std::holds_alternative<SymbolToken>(token)) {
-    SymbolToken symbol_token = std::get<SymbolToken>(token);
+      if (std::holds_alternative<Slash>(symbol_token.type())) return true;
+    }
 
-    if (std::holds_alternative<Slash>(symbol_token.type())) return true;
+    return false;
   }
-
-  return false;
-}
+} // namespace
 
 
 // parse_mul_div_expression: Tokens |-> (Expression, parsed tokens count)
